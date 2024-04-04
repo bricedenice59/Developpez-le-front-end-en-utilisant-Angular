@@ -6,10 +6,11 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import {SpinLoaderComponent} from "./component/spin-loader/spin-loader.component";
+import {TileInformationComponent} from "./component/tile-information/tile-information.component";
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, NotFoundComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, SpinLoaderComponent],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, SpinLoaderComponent, TileInformationComponent],
   providers: [],
   bootstrap: [AppComponent],
 })

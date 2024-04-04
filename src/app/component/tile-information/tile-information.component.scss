@@ -1,0 +1,16 @@
+.tile {
+  border-radius: 10px;
+  border: 2px solid #73AD21;
+  padding: 20px;
+  height: 75px;
+  width: 75px;
+  text-align: center;
+  &__title {
+    font-weight: normal;
+    text-transform: capitalize;
+  }
+
+  &__value {
+    font-weight: bold;
+  }
+}
