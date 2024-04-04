@@ -1,3 +1,10 @@
-<h2>Olympic games app</h2>
-<hr />
-<p>{{ (olympics$ | async)?.length }} data loaded</p>
+<section>
+  <ng-container *ngIf="isFetching$ | async; else content">
+    <p>Fetching data...</p>
+    <app-spin-loader></app-spin-loader>
+  </ng-container>
+
+  <ng-template #content>
+    <p>{{ (olympics$ | async)?.length }} data loaded</p>
+  </ng-template>
+</section>
