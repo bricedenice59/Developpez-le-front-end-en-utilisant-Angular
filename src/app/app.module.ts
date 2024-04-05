@@ -9,10 +9,12 @@ import {SpinLoaderComponent} from "./component/spin-loader/spin-loader.component
 import {TileInformationComponent} from "./component/tile-information/tile-information.component";
 import {PieChartModule} from "@swimlane/ngx-charts";
 import {PieChartTooltipComponent} from "./component/pie-chart-tooltip/pie-chart-tooltip.component";
+import {HeaderComponent} from "./component/header/header.component";
+import {FooterComponent} from "./component/footer/footer.component";
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, NotFoundComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, SpinLoaderComponent, TileInformationComponent, PieChartModule, PieChartTooltipComponent],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, SpinLoaderComponent, TileInformationComponent, PieChartModule, PieChartTooltipComponent, HeaderComponent, FooterComponent],
   providers: [],
   bootstrap: [AppComponent],
 })
