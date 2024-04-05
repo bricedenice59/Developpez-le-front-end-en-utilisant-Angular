@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Observable, of, Subscription} from 'rxjs';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 import {OlympicData} from "../../core/models/Olympic";
+import {Medal} from "../../core/models/Medals";
 
 @Component({
   selector: 'app-home',
@@ -13,6 +14,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public olympics$: Observable<OlympicData> = of([]);
   public isFetching$: Observable<boolean> = of(false);
   public generalInformation: { title: string; value: number }[] = [];
+  public medals : Medal[] = [];
 
   constructor(private olympicService: OlympicService) {}
 
@@ -29,9 +31,25 @@ export class HomeComponent implements OnInit, OnDestroy {
         const hasNoData: boolean = values.length == 0;
         if (!hasNoData) {
           this.setInfo(values);
+          this.setMedalsByCountry(values);
+          console.log(this.medals);
         }
       }
     );
+  }
+
+  setMedalsByCountry(values: OlympicData) : void {
+    this.medals = values.map((values)=> {
+      const nbMedals: number = values.participations.reduce(
+        (acc: number, currentValue) => acc+ currentValue.medalsCount, 0
+      );
+
+      return {
+        id: values.id,
+        name: values.country,
+        value: nbMedals
+      };
+    });
   }
 
   setInfo(values: OlympicData): void {

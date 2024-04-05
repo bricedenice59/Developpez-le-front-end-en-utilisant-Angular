@@ -14,6 +14,18 @@
       </ng-container>
     </div>
 
+    <ngx-charts-pie-chart [results]="medals" [labels]="true" [gradient]="true" [trimLabels]="false" [legend]="false">
+      <ng-template #tooltipTemplate let-model="model">
+        <h1>
+          {{model.name}}
+        </h1>
+        <h2>{{model.value}}%</h2>
+      </ng-template>
+<!--      <ng-template #tooltipTemplate let-model="model">-->
+<!--        <app-pie-chart-tooltip [country]="model.name" [medals]="model.value"></app-pie-chart-tooltip>-->
+<!--      </ng-template>-->
+    </ngx-charts-pie-chart>
+
     <ng-template #hasNoData>
       <p>No data to show...</p>
     </ng-template>
