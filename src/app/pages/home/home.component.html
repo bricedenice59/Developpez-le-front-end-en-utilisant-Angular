@@ -14,7 +14,7 @@
       </ng-container>
     </div>
 
-    <ngx-charts-pie-chart [results]="medals" [labels]="true" [gradient]="true" [trimLabels]="false" [legend]="false" (select)=selectCountryById($event)>
+    <ngx-charts-pie-chart [results]="medals" [labels]="true" [gradient]="true" [trimLabels]="false" [legend]="false" (select)=selectCountryByName($event)>
       <ng-template #tooltipTemplate let-model="model">
         <app-pie-chart-tooltip [country]="model.name" [medals]="model.value"></app-pie-chart-tooltip>
       </ng-template>

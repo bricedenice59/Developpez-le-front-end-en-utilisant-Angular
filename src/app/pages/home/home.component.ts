@@ -64,11 +64,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     ];
   }
 
-  selectCountryById(event: Medal) {
+  selectCountryByName(obj: Medal) {
     //event.name is the country is the string parameter passed to the details page
     this.routerService.navigate(
       ['/details'],
-      { queryParams: { country: event.name } }
+      { queryParams: { country: obj.name } }
     );
   }
 }
