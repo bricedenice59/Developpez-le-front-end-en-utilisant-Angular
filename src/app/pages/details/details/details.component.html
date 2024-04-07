@@ -1,1 +1,18 @@
-<p>{{country}}</p>
+<section>
+  <ng-container *ngIf="isFetching$ | async; else content">
+    <p>Loading data details for country {{countryFromPageParam}}...</p>
+    <app-spin-loader></app-spin-loader>
+  </ng-container>
+
+  <ng-template #content>
+    <ng-container *ngIf="hasCountryData; else hasNoData">
+      <p>{{countryFromPageParam}}</p>
+    </ng-container>
+  </ng-template>
+
+  <ng-template #hasNoData>
+    <p>No data was found for country : {{countryFromPageParam}}</p>
+  </ng-template>
+</section>
+
+

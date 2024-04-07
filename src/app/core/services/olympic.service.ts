@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, delay, Observable} from 'rxjs';
+import {BehaviorSubject, delay, map, Observable} from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import {OlympicData} from "../models/Olympic";
+import {Country, OlympicData} from "../models/Olympic";
 
 @Injectable({
   providedIn: 'root',
@@ -42,5 +42,16 @@ export class OlympicService {
 
   getIsFetchingData(): Observable<boolean>{
     return this.isFetchingData$.asObservable();
+  }
+
+  getOlympicCountryIdByName(name: string): Observable<number | undefined> {
+    return this.olympics$.pipe(
+      map((olympics) => {
+          const test = olympics.find((obj: Country) => {
+            return obj.country === name;
+          });
+          return test ? test.id : undefined;
+      }),
+    );
   }
 }
