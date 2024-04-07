@@ -3,6 +3,7 @@ import {Observable, of, Subscription} from 'rxjs';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 import {OlympicData} from "../../core/models/Olympic";
 import {Medal} from "../../core/models/Medals";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public generalInformation: { title: string; value: number }[] = [];
   public medals : Medal[] = [];
 
-  constructor(private olympicService: OlympicService) {}
+  constructor(private olympicService: OlympicService, private routerService: Router) {}
 
   ngOnDestroy(): void {
     this.olympicsSubscription$?.unsubscribe();
@@ -61,5 +62,13 @@ export class HomeComponent implements OnInit, OnDestroy {
       { title: 'Participations', value: participations },
       { title: 'Number of countries', value: values.length },
     ];
+  }
+
+  selectCountryById(event: Medal) {
+    //event.name is the country is the string parameter passed to the details page
+    this.routerService.navigate(
+      ['/details'],
+      { queryParams: { country: event.name } }
+    );
   }
 }
