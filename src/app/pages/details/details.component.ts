@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {OlympicService} from "../../../core/services/olympic.service";
+import {OlympicService} from "../../core/services/olympic.service";
 import {AsyncPipe, NgIf} from "@angular/common";
 import {Observable, of, Subscription} from "rxjs";
-import {SpinLoaderComponent} from "../../../component/spin-loader/spin-loader.component";
-import {Country} from "../../../core/models/Olympic";
-import {ChartDetails} from "../../../core/models/ChartDetails";
+import {SpinLoaderComponent} from "../../component/spin-loader/spin-loader.component";
+import {Country} from "../../core/models/Olympic";
+import {ChartDetails} from "../../core/models/ChartDetails";
 import {NgxChartsModule} from "@swimlane/ngx-charts";
-import {TileInformationComponent} from "../../../component/tile-information/tile-information.component";
+import {TileInformationComponent} from "../../component/tile-information/tile-information.component";
 
 type DetailsInformation = {
   totalEntries: number,
