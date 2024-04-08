@@ -2,8 +2,8 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Observable, of, Subscription} from 'rxjs';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 import {OlympicData} from "../../core/models/Olympic";
-import {Medal} from "../../core/models/Medals";
 import {Router} from "@angular/router";
+import {ChartDetails} from "../../core/models/ChartDetails";
 
 @Component({
   selector: 'app-home',
@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public olympics$: Observable<OlympicData> = of([]);
   public isFetching$: Observable<boolean> = of(false);
   public generalInformation: { title: string; value: number }[] = [];
-  public medals : Medal[] = [];
+  public medals : ChartDetails[] = [];
 
   constructor(private olympicService: OlympicService, private routerService: Router) {}
 
@@ -33,7 +33,6 @@ export class HomeComponent implements OnInit, OnDestroy {
         if (!hasNoData) {
           this.setInfo(values);
           this.setMedalsByCountry(values);
-          console.log(this.medals);
         }
       }
     );
@@ -46,7 +45,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       );
 
       return {
-        id: values.id,
         name: values.country,
         value: nbMedals
       };
@@ -64,7 +62,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     ];
   }
 
-  selectCountryByName(obj: Medal) {
+  selectCountryByName(obj: ChartDetails) {
     //event.name is the country is the string parameter passed to the details page
     this.routerService.navigate(
       ['/details'],

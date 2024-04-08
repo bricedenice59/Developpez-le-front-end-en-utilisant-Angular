@@ -44,13 +44,12 @@ export class OlympicService {
     return this.isFetchingData$.asObservable();
   }
 
-  getOlympicCountryIdByName(name: string): Observable<number | undefined> {
+  getOlympicCountryDataByName(name: string): Observable<Country | undefined> {
     return this.olympics$.pipe(
       map((olympics) => {
-          const test = olympics.find((obj: Country) => {
+          return olympics.find((obj: Country) => {
             return obj.country === name;
           });
-          return test ? test.id : undefined;
       }),
     );
   }
