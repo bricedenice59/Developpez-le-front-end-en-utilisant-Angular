@@ -6,5 +6,7 @@ export type Country = {
   participations: Participation[];
 };
 
-
+/**
+ * Country object schema extracted from existing mock json file at assets/mock/olympic.json
+ */
 export type OlympicData = Country[];

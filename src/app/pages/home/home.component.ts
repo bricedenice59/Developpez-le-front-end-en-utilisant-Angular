@@ -5,6 +5,11 @@ import {OlympicData} from "../../core/models/Olympic";
 import {Router} from "@angular/router";
 import {ChartDetails} from "../../core/models/ChartDetails";
 
+type DashboardInformation = {
+  totalParticipation: number,
+  totalCountries: number,
+}
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -15,7 +20,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public olympics$: Observable<OlympicData> = of([]);
   public isFetching$: Observable<boolean> = of(false);
   public generalInformation: { title: string; value: number }[] = [];
-  public medals : ChartDetails[] = [];
+  public chartDetails : ChartDetails[] = [];
 
   constructor(private olympicService: OlympicService, private routerService: Router) {}
 
@@ -31,37 +36,57 @@ export class HomeComponent implements OnInit, OnDestroy {
       (values: OlympicData) => {
         const hasNoData: boolean = values.length == 0;
         if (!hasNoData) {
-          this.setInfo(values);
-          this.setMedalsByCountry(values);
+          const dashBoardInfo = this.getDashboardInfo(values);
+          this.generalInformation = [
+            { title: 'Participations', value: dashBoardInfo.totalParticipation },
+            { title: 'Number of countries', value: dashBoardInfo.totalCountries },
+          ];
+          this.chartDetails = this.getNumberOfMedalsByCountry(values);
         }
       }
     );
   }
 
-  setMedalsByCountry(values: OlympicData) : void {
-    this.medals = values.map((values)=> {
-      const nbMedals: number = values.participations.reduce(
+  /**
+   * Gets formatted data (a list of tuple country/number of medals) for ngx charts pie component datasource
+   *
+   * @param values
+   * @returns {ChartDetails[]} An array of ChartDetails object.
+   */
+  getNumberOfMedalsByCountry(values: OlympicData) : ChartDetails[] {
+    const chartDetails: ChartDetails[] = [];
+    values.map((value)=> {
+      const nbMedals: number = value.participations.reduce(
         (acc: number, currentValue) => acc+ currentValue.medalsCount, 0
       );
-
-      return {
-        name: values.country,
+      chartDetails.push({
+        name: value.country,
         value: nbMedals
-      };
+      });
     });
+    return chartDetails;
   }
 
-  setInfo(values: OlympicData): void {
-    const participations: number = values.reduce(
+  /**
+   * Retrieves the number of countries and the number of participation for these
+   *
+   * @param values
+   * @returns {DashboardInformation} A DashboardInformation object.
+   */
+  getDashboardInfo(values: OlympicData): DashboardInformation {
+    const participationCount: number = values.reduce(
       (acc, cur) => acc + cur.participations.length, 0
     );
 
-    this.generalInformation = [
-      { title: 'Participations', value: participations },
-      { title: 'Number of countries', value: values.length },
-    ];
+    const nbCountries = values.length;
+    return { totalParticipation: participationCount, totalCountries: nbCountries };
   }
 
+  /**
+   * Function triggered by the click event on the pie chart slice
+   * Navigates to the detail page and passes the selected country
+   * @param obj
+   */
   selectCountryByName(obj: ChartDetails) {
     //event.name is the country is the string parameter passed to the details page
     this.routerService.navigate(

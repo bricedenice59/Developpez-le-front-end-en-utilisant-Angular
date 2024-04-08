@@ -14,6 +14,11 @@ export class OlympicService {
 
   constructor(private http: HttpClient) {}
 
+  /**
+   * Fetches data from http request
+   *
+   * @returns {Observable<OlympicData>} An observable of Olympic data.
+   */
   loadInitialData() : Observable<OlympicData> {
     this.isFetchingData$.next(true);
 
@@ -36,14 +41,28 @@ export class OlympicService {
     );
   }
 
+  /**
+   * Gets all Olympic data.
+   *
+   * @returns {Observable<OlympicData>} An observable of Olympic data.
+   */
   getOlympics() : Observable<OlympicData> {
     return this.olympics$.asObservable();
   }
 
+  /**
+   * Observable indicating whether data are being fetched(loaded).
+   */
   getIsFetchingData(): Observable<boolean>{
     return this.isFetchingData$.asObservable();
   }
 
+  /**
+   * Gets all Olympic data for a given country
+   *
+   * @param name - a valid string representing a country
+   * @returns {Observable<Country | undefined>} An observable of Country object or undefined if no data has been found for a country
+   */
   getOlympicCountryDataByName(name: string): Observable<Country | undefined> {
     return this.olympics$.pipe(
       map((olympics) => {

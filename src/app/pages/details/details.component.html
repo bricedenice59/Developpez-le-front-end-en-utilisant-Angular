@@ -5,7 +5,7 @@
   </ng-container>
 
   <ng-template #content>
-    <ng-container *ngIf="hasCountryData; else hasNoData">
+    <ng-container *ngIf="isSelectedCountryValid; else hasNoData">
       <div class="title-tile">{{ selectedCountry }}</div>
           <div class="flexbox-container">
             <app-tile-information *ngFor="let detailInfo of detailsInformation"
