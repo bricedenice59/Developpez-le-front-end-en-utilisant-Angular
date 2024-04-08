@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {OlympicService} from "../../core/services/olympic.service";
 import {AsyncPipe, NgIf} from "@angular/common";
@@ -29,7 +29,7 @@ type DetailsInformation = {
   styleUrl: './details.component.scss'
 })
 
-export class DetailsComponent implements OnInit {
+export class DetailsComponent implements OnInit, OnDestroy {
   public isFetching$: Observable<boolean> = of(false);
   public olympicCountry$: Observable<Country|undefined> = of(undefined);
   public olympicCountrySubscription$!: Subscription;
@@ -61,6 +61,10 @@ export class DetailsComponent implements OnInit {
           ];
         }
     });
+  }
+
+  ngOnDestroy(): void {
+    this.olympicCountrySubscription$.unsubscribe();
   }
 
   getChartDetailsForCountry(country: Country): ChartDetails[] {
