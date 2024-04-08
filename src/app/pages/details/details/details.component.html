@@ -1,4 +1,4 @@
-<section>
+<section class="details">
   <ng-container *ngIf="isFetching$ | async; else content">
     <p>Loading data details for country {{countryFromPageParam}}...</p>
     <app-spin-loader></app-spin-loader>
@@ -13,6 +13,8 @@
   <ng-template #hasNoData>
     <p>No data was found for country : {{countryFromPageParam}}</p>
   </ng-template>
+
+  <button (click)="goBackToHomePage()">Go back</button>
 </section>
 
 

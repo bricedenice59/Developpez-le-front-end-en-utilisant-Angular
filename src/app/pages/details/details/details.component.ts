@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {OlympicService} from "../../../core/services/olympic.service";
 import {AsyncPipe, NgIf} from "@angular/common";
 import {Observable, of, Subscription} from "rxjs";
@@ -24,7 +24,9 @@ export class DetailsComponent implements OnInit {
   public countryFromPageParam:string;
   public hasCountryData: boolean = true;
 
-  constructor(private activatedRoute: ActivatedRoute, private olympicService: OlympicService) {
+  constructor(private olympicService: OlympicService,
+              private activatedRoute: ActivatedRoute,
+              private routerService: Router) {
     this.countryFromPageParam = this.activatedRoute.snapshot.queryParams['country'];
     this.isFetching$ = this.olympicService.getIsFetchingData();
     this.olympicCountry$ = this.olympicService.getOlympicCountryIdByName(this.countryFromPageParam);
@@ -37,4 +39,7 @@ export class DetailsComponent implements OnInit {
     });
   }
 
+  goBackToHomePage(): void {
+    this.routerService.navigateByUrl('/');
+  }
 }
