@@ -1,4 +1,4 @@
-<section class="details">
+<section>
   <ng-container *ngIf="isFetching$ | async; else content">
     <p>Loading data details for country {{ selectedCountry }}...</p>
     <app-spin-loader></app-spin-loader>
@@ -7,11 +7,11 @@
   <ng-template #content>
     <ng-container *ngIf="isSelectedCountryValid; else hasNoData">
       <div class="title-tile">{{ selectedCountry }}</div>
-          <div class="flexbox-container">
-            <app-tile-information *ngFor="let detailInfo of detailsInformation"
-                                  [title]="detailInfo.title" [value]="detailInfo.value">
-            </app-tile-information>
-          </div>
+      <div class="flexbox-container">
+        <app-tile-information *ngFor="let detailInfo of detailsInformation"
+                              [title]="detailInfo.title" [value]="detailInfo.value">
+        </app-tile-information>
+      </div>
 
       <ngx-charts-bar-vertical [results]="chartDetails"
                                [gradient]="false"
@@ -21,7 +21,9 @@
                                [showXAxisLabel]="true"
                                [showYAxisLabel]="true"
                                xAxisLabel="Years"
-                               yAxisLabel="Medals"></ngx-charts-bar-vertical>
+                               yAxisLabel="Medals">
+      </ngx-charts-bar-vertical>
+
     </ng-container>
   </ng-template>
 

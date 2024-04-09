@@ -1,4 +1,4 @@
-.title-tile {
+.main-box {
   background: #04838f;
   font-weight: bold;
   font-size: 18px;
@@ -6,10 +6,14 @@
   border-radius: 10px;
   border: 2px solid #04838f;
   padding: 20px;
-  height: 25px;
+  height: 20px;
   width: 200px;
   text-align: center;
+  margin-left: 175px;
+  margin-bottom: 20px;
+  margin-top: 70px;
 }
+
 
 .flexbox-container{
   display: flex;
