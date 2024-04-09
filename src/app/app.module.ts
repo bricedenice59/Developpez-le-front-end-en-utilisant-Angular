@@ -11,11 +11,14 @@ import {PieChartModule} from "@swimlane/ngx-charts";
 import {PieChartTooltipComponent} from "./component/pie-chart-tooltip/pie-chart-tooltip.component";
 import {HeaderComponent} from "./component/header/header.component";
 import {FooterComponent} from "./component/footer/footer.component";
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, NotFoundComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, SpinLoaderComponent, TileInformationComponent, PieChartModule, PieChartTooltipComponent, HeaderComponent, FooterComponent],
-  providers: [],
+  providers: [
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
