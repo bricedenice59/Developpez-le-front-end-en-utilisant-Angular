@@ -57,7 +57,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
   public isSelectedCountryValid: boolean = true;
 
   /**
-   * Input datasource for ngx-chart histogram
+   * Input datasource for ngx-chart histogram component
    */
   public chartDetails: ChartDetails[] = [];
 
@@ -65,6 +65,11 @@ export class DetailsComponent implements OnInit, OnDestroy {
    * Array of various information to be shown in UI
    */
   public detailsInformation: { title: string; value: number }[] = [];
+
+  /**
+   * Chart view size
+   */
+  public chartView: [number,number] = [500, 600];
 
   constructor(private olympicService: OlympicService,
               private activatedRoute: ActivatedRoute,

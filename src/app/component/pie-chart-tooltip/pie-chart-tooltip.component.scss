@@ -1,7 +1,9 @@
 .tooltip{
-  background: #04838f;
   width: 100%;
   min-width: 100px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 
   &__country {
     font-size: 18px;
@@ -12,9 +14,5 @@
   &__medals {
     font-size: 15px;
     color: white;
-  }
-
-  &__img {
-      filter: sepia(50%) saturate(300%) brightness(70%) hue-rotate(180deg);
   }
 }

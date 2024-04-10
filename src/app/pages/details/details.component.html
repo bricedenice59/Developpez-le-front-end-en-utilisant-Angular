@@ -6,23 +6,26 @@
 
   <ng-template #content>
     <ng-container *ngIf="isSelectedCountryValid; else hasNoData">
-      <div class="title-tile">{{ selectedCountry }}</div>
+      <div class="main-box-with-green-background">{{ selectedCountry }}</div>
       <div class="flexbox-container">
         <app-tile-information *ngFor="let detailInfo of detailsInformation"
                               [title]="detailInfo.title" [value]="detailInfo.value">
         </app-tile-information>
       </div>
 
-      <ngx-charts-bar-vertical [results]="chartDetails"
-                               [gradient]="false"
-                               [xAxis]="true"
-                               [yAxis]="true"
-                               [legend]="false"
-                               [showXAxisLabel]="true"
-                               [showYAxisLabel]="true"
-                               xAxisLabel="Years"
-                               yAxisLabel="Medals">
-      </ngx-charts-bar-vertical>
+      <div class="ngx-chart-bar">
+        <ngx-charts-bar-vertical [results]="chartDetails"
+                                 [view]="chartView"
+                                 [gradient]="false"
+                                 [xAxis]="true"
+                                 [yAxis]="true"
+                                 [legend]="false"
+                                 [showXAxisLabel]="true"
+                                 [showYAxisLabel]="true"
+                                 xAxisLabel="Years"
+                                 yAxisLabel="Medals">
+        </ngx-charts-bar-vertical>
+      </div>
 
     </ng-container>
   </ng-template>
@@ -31,7 +34,10 @@
     <p>No data was found for country : {{ selectedCountry }}</p>
   </ng-template>
 
-  <button (click)="goBackToHomePage()">Go back</button>
+  <div class="button-container">
+    <button class="button" (click)="goBackToHomePage()">Go back</button>
+  </div>
+
 </section>
 
 

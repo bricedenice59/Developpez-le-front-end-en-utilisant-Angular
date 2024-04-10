@@ -16,11 +16,37 @@ type DashboardInformation = {
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit, OnDestroy {
+
+  /**
+   * Subscription for data updates.
+   */
   public olympicsSubscription$: Subscription | undefined;
+
+  /**
+   * Observable for the country's Olympic data.
+   */
   public olympics$: Observable<OlympicData> = of([]);
+
+  /**
+   * Gets the status of data fetching
+   */
   public isFetching$: Observable<boolean> = of(false);
+
+  /**
+   *  Various information to be shown in UI
+   */
   public generalInformation: { title: string; value: number }[] = [];
+
+  /**
+   * Input datasource for ngx-chart pie component
+   */
   public chartDetails : ChartDetails[] = [];
+
+  /**
+   * Chart view size
+   */
+  public chartView: [number,number] = [700, 800];
+
 
   constructor(private olympicService: OlympicService, private routerService: Router) {}
 

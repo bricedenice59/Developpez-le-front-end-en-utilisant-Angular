@@ -1,4 +1,9 @@
-.main-box {
+.flexbox-container{
+  display: flex;
+  justify-content: center;
+}
+
+.main-box-with-green-background {
   background: #04838f;
   font-weight: bold;
   font-size: 18px;
@@ -9,13 +14,7 @@
   height: 20px;
   width: 200px;
   text-align: center;
-  margin-left: 175px;
+  margin-left: 220px;
   margin-bottom: 20px;
   margin-top: 70px;
-}
-
-
-.flexbox-container{
-  display: flex;
-  justify-content: center;
 }
