@@ -1,6 +1,16 @@
 .flexbox-container{
   display: flex;
-  justify-content: center;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 100%; /* Full viewport height */
+}
+
+.row{
+  flex-direction: row;
+}
+
+.column{
+  flex-direction: column;
 }
 
 .main-box-with-green-background {
@@ -14,7 +24,13 @@
   height: 20px;
   width: 200px;
   text-align: center;
-  margin-left: 220px;
   margin-bottom: 20px;
   margin-top: 70px;
+}
+
+.ngx-chart-pie{
+  margin-top: 25px;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
 }
