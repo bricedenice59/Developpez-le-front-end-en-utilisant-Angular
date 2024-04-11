@@ -66,11 +66,6 @@ export class DetailsComponent implements OnInit, OnDestroy {
    */
   public detailsInformation: { title: string; value: number }[] = [];
 
-  /**
-   * Chart view size
-   */
-  public chartView: [number,number] = [500, 600];
-
   constructor(private olympicService: OlympicService,
               private activatedRoute: ActivatedRoute,
               private routerService: Router) {

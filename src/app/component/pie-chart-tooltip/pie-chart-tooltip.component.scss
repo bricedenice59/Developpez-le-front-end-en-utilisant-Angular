@@ -1,6 +1,7 @@
 .tooltip{
   width: 100%;
   min-width: 100px;
+  max-width: 100px;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -14,5 +15,20 @@
   &__medals {
     font-size: 15px;
     color: white;
+  }
+}
+
+@media (max-width: 800px) {
+  .tooltip {
+    width: 75%;
+    min-width: 75px;
+    max-width: 75px;
+    &__country {
+      font-size: 14px;
+    }
+    &__medals {
+      font-size: 13px;
+      color: white;
+    }
   }
 }

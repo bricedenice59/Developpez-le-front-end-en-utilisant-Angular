@@ -1,11 +1,8 @@
 .flexbox-container{
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center; /* Center vertically */
-}
-
-.row{
-  flex-direction: row;
 }
 
 .column{
@@ -28,10 +25,12 @@
 }
 
 .ngx-chart-bar{
-  margin-top: 75px;
+  margin-top: 50px;
   display: flex;
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
+  width: 600px;
+  height: 400px;
 }
 
 .button-container {
@@ -64,3 +63,20 @@
   color: #4CAF50; /* Green text on hover */
   border: 2px solid #4CAF50; /* Green border on hover */
 }
+
+@media (max-width: 800px) {
+  .ngx-chart-bar {
+    width: 300px;
+    height: 200px;
+  }
+  .button {
+    width: 110px;
+    font-size: 14px;
+  }
+  .main-box-with-green-background {
+    width: 100px;
+    font-size: 14px;
+    margin-top: 20px;
+  }
+}
+

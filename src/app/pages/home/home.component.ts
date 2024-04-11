@@ -42,12 +42,6 @@ export class HomeComponent implements OnInit, OnDestroy {
    */
   public chartDetails : ChartDetails[] = [];
 
-  /**
-   * Chart view size
-   */
-  public chartView: [number,number] = [700, 800];
-
-
   constructor(private olympicService: OlympicService, private routerService: Router) {}
 
   ngOnDestroy(): void {

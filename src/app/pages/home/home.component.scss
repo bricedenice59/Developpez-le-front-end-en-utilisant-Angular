@@ -1,12 +1,9 @@
 .flexbox-container{
   display: flex;
+  flex-wrap: wrap;
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
   height: 100%; /* Full viewport height */
-}
-
-.row{
-  flex-direction: row;
 }
 
 .column{
@@ -19,18 +16,31 @@
   font-size: 18px;
   color: white;
   border-radius: 10px;
-  border: 2px solid #04838f;
   padding: 20px;
   height: 20px;
-  width: 200px;
   text-align: center;
   margin-bottom: 20px;
   margin-top: 70px;
 }
 
 .ngx-chart-pie{
-  margin-top: 25px;
+  margin-top: 75px;
   display: flex;
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
+  width: 600px;
+  height: 400px;
+}
+
+@media (max-width: 800px) {
+  .ngx-chart-pie {
+    width: 300px;
+    height: 200px;
+    margin-top: 20px;
+  }
+  .main-box-with-green-background {
+    width: 100px;
+    font-size: 14px;
+    margin-top: 20px;
+  }
 }

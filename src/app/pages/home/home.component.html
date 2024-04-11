@@ -3,12 +3,11 @@
         <p>Fetching data...</p>
         <app-spin-loader class="spin-loader"></app-spin-loader>
     </ng-container>
-</div>
 
   <ng-template #content>
     <ng-container *ngIf="generalInformation && generalInformation.length > 0; else hasNoData">
     <div class="main-box-with-green-background">Medals per Country</div>
-    <div class="flexbox-container row">
+    <div class="flexbox-container">
         <app-tile-information *ngFor="let info of generalInformation"
                               [title]="info.title" [value]="info.value">
         </app-tile-information>
@@ -16,7 +15,6 @@
 
     <div class="ngx-chart-pie">
       <ngx-charts-pie-chart [results]="chartDetails"
-                            [view]="chartView"
                             [labels]="true"
                             [gradient]="true"
                             [trimLabels]="false"
@@ -35,5 +33,5 @@
   <ng-template #hasNoData>
     <h2>No data to show...</h2>
   </ng-template>
-
+</div>
 
